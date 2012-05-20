@@ -62,6 +62,7 @@ body {
 iframe {
     display: none !important;
 
+    .post_likes &,
     .post_video & {
         display: inline !important;
         }
@@ -648,10 +649,20 @@ a:hover {
         }
 
     &_info {
-        overflow: hidden;
         position: relative;
         margin-top: 15px;
         font-size: @fz-s;
+
+        //clerfix
+        &:before, &:after {
+            content: "\0020";
+            display: block;
+            height: 0;
+            visibility: hidden;
+            }
+
+        &:after {clear: both;}
+        *zoom: 1
         }
 
     &_tags {
@@ -743,6 +754,12 @@ a:hover {
                 }
             }
 
+        }
+
+    &_likes {
+        float: right;
+        margin-top: -3px;
+        margin-left: 10px;
         }
     }
 
