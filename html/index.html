@@ -6,31 +6,44 @@
     <!-- Template source on github - https://github.com/operatino/tohtmlit -->
 
     <meta charset="UTF-8">
-    <title>ToHTML.it</title>
-    <link rel="shortcut icon" href="{Favicon}">
+    <title>{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
+    <link rel="shortcut icon" href="http://static.tumblr.com/elbgqp3/7dGm4bdjk/favicon.ico">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    {block:Description}
+    <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="if:Show notes" content="1">
+
+    {block:PermalinkPage}
     <meta name="text:Disqus Shortname" content="" />
+    {/block:PermalinkPage}
 
-    <link media="all and (min-width: 990px)" rel="stylesheet"  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link media="all and (min-width: 990px)" rel="stylesheet" href='css/icon-font.css' type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
+    <link media="all and (min-width: 990px)" rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,cyrillic'>
+    <link media="all and (min-width: 990px)" rel="stylesheet" href='http://static.tumblr.com/elbgqp3/d7em4bm1g/icon-font.css'>
+    <link rel="stylesheet" href="http://static.tumblr.com/elbgqp3/HPUmc2re6/style.css">
 
-    <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+    <style type="text/css">
+        {CustomCSS}
+    </style>
+
+    <!--[if lt IE 9]><script src="http://static.tumblr.com/elbgqp3/EuNm4a71f/html5shiv.js"></script><![endif]-->
 </head>
 <body>
 
 <div id="wrapper">
     <header class="header">
-        <a href="/" class="logo">toHTML.it</a>
+        <a href="/" class="logo">{Title}</a>
 
+
+        {block:Description}
         <div class="header_description">
-            #HTML #CSS #WebDev
+            {Description}
         </div>
+        {/block:Description}
     </header>
 
     <aside class="sidebar">
@@ -39,177 +52,286 @@
         </form>
 
         <nav class="navigation" role="navigation">
-            <li><a href="#777">Статьи</a></li>
-            <li><a href="#777">Заметки</a></li>
-            <li><a href="http://rhr.me/#c">Об авторе</a></li>
-            <li><a href="/archive" class="l-archive"><span>Архив</span></a></li>
-            <li><a href="{RSS}" title="RSS feed" class="l-rss"><span>RSS</span></a></li>
-            <li class="navigation_icons"><a href="#facebook" class="navigation_ic l-facebook"><span>Facebook</span></a> <a href="#twitter" class="navigation_ic l-twitter"><span>Twitter</span></a></li>
+            <li><a href="/tagged/статьи">Статьи</a></li>
+            <li><a href="/tagged/заметки">Заметки</a></li>
+            <li><a href="http://rhr.me/#c" target="_blank">Об авторе</a></li>
+            <li><a href="/archive" class="l-archive"><span>{lang:Archive}</span></a></li>
+            <li><a href="{RSS}" title="RSS feed" class="l-rss" target="_blank"><span>{lang:RSS}</span></a></li>
+
+            {block:HasPages}
+            {block:Pages}
+            <li><a href="{URL}">{Label}</a></li>
+            {/block:Pages}
+            {/block:HasPages}
+
+            {block:AskEnabled}
+            <li><a href="/ask">{AskLabel}</a></li>
+            {/block:AskEnabled}
+
+            {block:SubmissionsEnabled}
+            <li><a href="/submit">{SubmitLabel}</a></li>
+            {/block:SubmissionsEnabled}
+
+            <li class="navigation_icons"><a href="http://twitter.com/operatino" class="navigation_ic l-twitter" title="@operatino"  target="_blank"><span>Twitter</span></a></li>
         </nav>
     </aside>
 
     <div class="main" role="main">
 
-        <div class="search_results">Вы искали и нашли</div>
 
-        <article class="post">
-            <div class="post_content">
-                <p>Результат поиска</p>
-            </div>
-        </article>
+        {block:SearchPage}
+            {block:SearchResults}
+                <div class="search_results">{lang:Your search for SearchQuery returned SearchResultCount results 2}</div>
+            {block:SearchResults}
 
-        <article class="post post__text">
-
-            <header class="post_header">
-                <h2 class="post_title"><a href="{Permalink}">Заголовок</a></h2>
-
-                <div class="post_date">
-                    <span class="post_date_day">7</span> 02/2012
+            {block:NoSearchResults}
+                <div class="post">
+                    <div class="post_content">
+                        {lang:No search results for SearchQuery 2}
+                    </div>
                 </div>
-            </header>
+            {block:NoSearchResults}
+        {/block:SearchPage}
 
-            <div class="post_content">
-                Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends.
 
-<pre>
-<code>
-    <span><b><i></i></b></span>
-</code>
-</pre>
+        {block:Posts}
+            {block:Text}
+            <article class="post post__text">
 
-            </div>
+                <header class="post_header">
+                    {block:Title}
+                    <h2 class="post_title"><a href="{Permalink}">{Title}</a></h2>
+                    {/block:Title}
 
-            <div class="post_info">
-                <a href="{Permalink}#disqus_thread"  class="post_comments">7</a>
+                    {block:Date}
+                    <div class="post_date">
+                        <span class="post_date_day">{DayOfMonthWithZero}</span> {MonthNumber}/{Year}
+                    </div>
+                    {/block:Date}
+                </header>
 
-                <ul class="post_tags">
-                    <li><a href="{TagURL}">CSS</a></li>
-                    <li><a href="{TagURL}">HTML</a></li>
-                    <li><a href="{TagURL}">twitter-stream</a></li>
-                </ul>
-            </div>
-        </article>
+                <div class="post_content">{Body}</div>
 
-        <article class="post post__text">
+                <div class="post_info">
+                    {block:IndexPage}
+                        {block:IfDisqusShortname}
+                            <a href="{Permalink}#disqus_thread"  class="post_comments" title="Комментировать"></a>
+                        {/block:IfDisqusShortname}
+                    {/block:IndexPage}
 
-            <header class="post_header">
-                <h2 class="post_title"><a href="{Permalink}">Заголовок</a></h2>
+                    {block:PermalinkPage}
+                    <div class="post_likes">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="operatino">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                    {/block:PermalinkPage}
 
-                <div class="post_date">
-                    <span class="post_date_day">7</span> 02/2012
+                    {block:HasTags}
+                    <ul class="post_tags">
+                        {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+                    </ul>
+                    {/block:HasTags}
                 </div>
-            </header>
+            </article>
+            {/block:Text}
 
-            <div class="post_content">
-                <blockquote>
-                    <p>У <a href="http://t.co/x5f0tEbx">http://t.co/x5f0tEbx</a> оказывается есть своя крутая RSS лента с новостями о поддержке новых свойств браузерами <a href="http://t.co/gPj0aiFH">http://t.co/gPj0aiFH</a> #css</p>
-                </blockquote>
-                Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends.
-            </div>
+            {block:Link}
+            <article class="post post__link">
 
-            <div class="post_info">
-                <a href="{Permalink}#disqus_thread"  class="post_comments">7</a>
+                {block:Date}
+                <header class="post_header">
+                    <div class="post_date">
+                        <span class="post_date_day">{DayOfMonthWithZero}</span> {MonthNumber}/{Year}
+                    </div>
+                </header>
+                {/block:Date}
 
-                <ul class="post_tags">
-                    <li><a href="{TagURL}">CSS</a></li>
-                    <li><a href="{TagURL}">HTML</a></li>
-                </ul>
-            </div>
-        </article>
+                <div class="post_content">
+                    <h2 class="post_title post_title__link"><a href="{URL}" class="link" {Target}>{Name}</a></h2>
 
-        <article class="post post__quote">
-
-            <header class="post_header">
-                <div class="post_date">
-                    <span class="post_date_day">7</span> 02/2012
+                    {block:Description}
+                        {Description}
+                    {/block:Description}
                 </div>
-            </header>
 
-            <div class="post_content">
-                <a href="http://bit.ly/JHtI41" class="from-twitter" title="Ссылка на твит"><span>@operatino:</span></a>
-                <blockquote>
-                    <p>У <a href="http://t.co/x5f0tEbx">http://t.co/x5f0tEbx</a> оказывается есть своя крутая RSS лента с новостями о поддержке новых свойств браузерами <a href="http://t.co/gPj0aiFH">http://t.co/gPj0aiFH</a> #css</p>
-                </blockquote>
-            </div>
+                <div class="post_info">
+                    {block:IndexPage}
+                        {block:IfDisqusShortname}
+                            <a href="{Permalink}#disqus_thread"  class="post_comments" title="Комментировать"></a>
+                        {/block:IfDisqusShortname}
+                    {/block:IndexPage}
 
-            <div class="post_info">
-                <a href="{Permalink}#disqus_thread"  class="post_comments">7</a>
+                    {block:PermalinkPage}
+                    <div class="post_likes">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="operatino">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                    {/block:PermalinkPage}
 
-                <ul class="post_tags">
-                    <li><a href="{TagURL}">CSS</a></li>
-                    <li><a href="{TagURL}">HTML</a></li>
-                    <li><a href="{TagURL}">twitter-stream</a></li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="post post__quote">
-
-            <header class="post_header">
-                <div class="post_date">
-                    <span class="post_date_day">7</span> 02/2012
+                    {block:HasTags}
+                    <ul class="post_tags">
+                        {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+                    </ul>
+                    {/block:HasTags}
                 </div>
-            </header>
+            </article>
+            {/block:Link}
 
-            <div class="post_content">
-                Что вы думаете об этом?
-                <blockquote>
-                    <p>У <a href="http://t.co/x5f0tEbx">http://t.co/x5f0tEbx</a> оказывается есть своя крутая RSS лента с новостями о поддержке новых свойств браузерами <a href="http://t.co/gPj0aiFH">http://t.co/gPj0aiFH</a> #css</p>
-                </blockquote>
-            </div>
+            {block:Photo}
+            <article class="post post__photo">
 
-            <div class="post_info">
-                <a href="{Permalink}#disqus_thread"  class="post_comments">7</a>
+                {block:Date}
+                <header class="post_header">
+                    <div class="post_date">
+                        <span class="post_date_day">{DayOfMonthWithZero}</span> {MonthNumber}/{Year}
+                    </div>
+                </header>
+                {/block:Date}
 
-                <ul class="post_tags">
-                    <li><a href="{TagURL}">CSS</a></li>
-                    <li><a href="{TagURL}">HTML</a></li>
-                    <li><a href="{TagURL}">twitter-stream</a></li>
-                </ul>
-            </div>
-        </article>
+                <div class="post_content">
+                    {LinkOpenTag}<div class="post_image"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></div>{LinkCloseTag}
 
-        <article class="post video">
-
-            <header class="post_header">
-                <div class="post_date">
-                    <span class="post_date_day">7</span> 02/2012
+                    {block:Caption}
+                    <div class="post_caption">{Caption}</div>
+                    {/block:Caption}
                 </div>
-            </header>
 
-            <div class="post_content">
-                <div class="post_video"><iframe src="http://player.vimeo.com/video/42219816" width="500" height="281" frameborder="0"></iframe></div>
+                <div class="post_info">
+                    {block:IndexPage}
+                        {block:IfDisqusShortname}
+                            <a href="{Permalink}#disqus_thread"  class="post_comments" title="Комментировать"></a>
+                        {/block:IfDisqusShortname}
+                    {/block:IndexPage}
 
-                <p></p><p>Официальное видео о Front-trends</p>
+                    {block:HasTags}
+                    <ul class="post_tags">
+                        {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+                    </ul>
+                    {/block:HasTags}
+                </div>
+            </article>
+            {/block:Photo}
 
-                <p>+ еще одно тут - <a href="https://vimeo.com/42227345">https://vimeo.com/42227345</a></p><p></p>
+            {block:Quote}
+            <article class="post post__quote">
 
-            </div>
+                {block:Date}
+                <header class="post_header">
+                    <div class="post_date">
+                        <span class="post_date_day">{DayOfMonthWithZero}</span> {MonthNumber}/{Year}
+                    </div>
+                </header>
+                {/block:Date}
 
-            <div class="post_info">
-                <a href="{Permalink}#disqus_thread" class="post_comments">7 <span>коммент.</span></a>
+                <div class="post_content">
+                    {block:Source}{Source}{block:Source}
+                    <blockquote>{Quote}</blockquote>
+                </div>
 
-                <ul class="post_tags">
-                    <li><a href="{TagURL}">CSS</a></li>
-                </ul>
-            </div>
-        </article>
+                <div class="post_info">
+                    {block:IndexPage}
+                        {block:IfDisqusShortname}
+                            <a href="{Permalink}#disqus_thread"  class="post_comments" title="Комментировать"></a>
+                        {/block:IfDisqusShortname}
+                    {/block:IndexPage}
 
+                    {block:HasTags}
+                    <ul class="post_tags">
+                        {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+                    </ul>
+                    {/block:HasTags}
+                </div>
+            </article>
+            {/block:Quote}
+
+            {block:Video}
+            <article class="post post__video">
+
+                {block:Date}
+                <header class="post_header">
+                    <div class="post_date">
+                        <span class="post_date_day">{DayOfMonthWithZero}</span> {MonthNumber}/{Year}
+                    </div>
+                </header>
+                {/block:Date}
+
+                <div class="post_content">
+                    <div class="post_video">{Video-500}</div>
+
+                    {block:Caption}
+                    <div class="post_caption">{Caption}</div>
+                    {/block:Caption}
+                </div>
+
+                <div class="post_info">
+                    {block:IndexPage}
+                        {block:IfDisqusShortname}
+                            <a href="{Permalink}#disqus_thread"  class="post_comments" title="Комментировать"></a>
+                        {/block:IfDisqusShortname}
+                    {/block:IndexPage}
+
+                    {block:PermalinkPage}
+                        <div class="post_likes">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="operatino">Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    {/block:PermalinkPage}
+
+                    {block:HasTags}
+                    <ul class="post_tags">
+                        {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+                    </ul>
+                    {/block:HasTags}
+                </div>
+            </article>
+            {/block:Video}
+
+            {block:IfDisqusShortname}
+                {block:Permalink}
+                    <div class="comments">
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+                        <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+                    </div>
+                {/block:Permalink}
+            {/block:IfDisqusShortname}
+
+        {/block:Posts}
+
+        {block:Pagination}
         <nav class="pagination" role="navigation">
-            <a href="{NextPage}" class="older">&laquo; Старые</a>
-            <a href="{PreviousPage}" class="newer">Новые &raquo;</a>
+            {block:NextPage}
+                <a href="{NextPage}" class="older">&laquo; Старые</a>
+            {/block:NextPage}
+
+            {block:PreviousPage}
+                <a href="{PreviousPage}" class="newer">{lang:Newer Entries} &raquo;</a>
+            {/block:PreviousPage}
         </nav>
+        {/block:Pagination}
+
+        {block:PermalinkPagination}
+        <nav class="pagination" role="navigation">
+            {block:NextPost}
+                <a href="{NextPost}" class="newer">{lang:Next post} &raquo;</a>
+            {/block:NextPost}
+
+            {block:PreviousPost}
+                <a href="{PreviousPost}" class="older">&laquo; {lang:Previous post}</a>
+            {/block:PreviousPost}
+        </nav>
+        {/block:PermalinkPagination}
     </div>
 </div>
 
 <footer class="footer">
-    Powered by <a href="http://www.tumblr.com">Tumblr</a>. <a href="#" class="l-source" title="Template source on github"><span>Template source on github.</span></a>
+    Powered by <a href="http://www.tumblr.com">Tumblr</a>. <a href="https://github.com/operatino/tohtmlit" class="l-source" title="Template source on github" target="_blank"><span>Template source on github.</span></a>
 </footer>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="http://static.tumblr.com/elbgqp3/2rcm4a72r/jquery.min.js"><\/script>')</script>
 
-<script src="js/prettify.js"></script>
+<script src="http://static.tumblr.com/elbgqp3/3LQm4a71v/prettify.js"></script>
 
 <script>
     $(function() {
@@ -233,22 +355,24 @@
 <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
 
-<!--{block:IfDisqusShortname}-->
-<!--<script type="text/javascript">-->
-    <!--//<![CDATA[-->
-    <!--(function() {-->
-        <!--var links = document.getElementsByTagName('a');-->
-        <!--var query = '?';-->
-        <!--for(var i = 0; i < links.length; i++) {-->
-            <!--if(links[i].href.indexOf('#disqus_thread') >= 0) {-->
-                <!--query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';-->
-            <!--}-->
-        <!--}-->
-        <!--document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');-->
-    <!--})();-->
-    <!--//]]>-->
-<!--</script>-->
-<!--{/block:IfDisqusShortname}-->
+{block:PermalinkPage}
+    {block:IfDisqusShortname}
+    <script type="text/javascript">
+        //<![CDATA[
+        (function() {
+            var links = document.getElementsByTagName('a');
+            var query = '?';
+            for(var i = 0; i < links.length; i++) {
+                if(links[i].href.indexOf('#disqus_thread') >= 0) {
+                    query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+                }
+            }
+            document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+        })();
+        //]]>
+    </script>
+    {/block:IfDisqusShortname}
+{/block:PermalinkPage}
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -273,5 +397,18 @@
 </script>
 <noscript><div><img src="//mc.yandex.ru/watch/13948459" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-31907550-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
 </body>
 </html>

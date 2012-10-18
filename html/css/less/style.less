@@ -59,13 +59,9 @@ body {
 
 
 //Removing tumlbr iframe blinking
-iframe {
-    display: none !important;
-
-    .post_likes &,
-    .post_video & {
-        display: inline !important;
-        }
+#ga_target,
+#tumblr_controls {
+    display: none;
     }
 
 a {
@@ -248,7 +244,7 @@ a:hover {
         -ms-animation: @logo-anim__props;
         -o-animation: @logo-anim__props;
         -webkit-animation: @logo-anim__props;
-        -moz-animation:    @logo-anim__props;
+        -moz-animation: @logo-anim__props;
 
 
         font-size: 60px;
@@ -405,6 +401,8 @@ a:hover {
         .m-br(@main__border-rad);
         font-size: @fz-s;
         .custom-font;
+
+        -webkit-backface-visibility: hidden;
         }
 
     @media @media-step1 {
@@ -601,6 +599,7 @@ a:hover {
             margin-left: 2em;
             }
 
+        iframe,
         img {
             max-width: 100%;
             }
@@ -642,10 +641,6 @@ a:hover {
     &_video {
         text-align: center;
         margin-bottom: .5em;
-
-        iframe {
-            max-width: 100%;
-            }
         }
 
     &_info {
@@ -717,17 +712,7 @@ a:hover {
     &_comments {
         float: right;
 
-        span {
-            display: none;
-            }
-
-        &:before {
-            content: 'Комментировать (';
-            }
-
-        &:after {
-            content: ')';
-            }
+        &:before {content: 'Комментировать';}
 
         @media @media-step1 {
             text-decoration: none;
@@ -747,10 +732,6 @@ a:hover {
                 content: ' ';
                 .icon-font;
                 font-size: 1.1em;
-                }
-
-            &:after {
-                display: none;
                 }
             }
 
