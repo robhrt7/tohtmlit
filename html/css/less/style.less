@@ -7,6 +7,7 @@
 @fz-xxs: 10px;
 @fz-xs: 11px;
 @fz-s: 12px;
+@fz-xs: 13px;
 @fz-m: 14px;
 @fz-l: 16px;
 @fz-xl: 18px;
@@ -43,6 +44,7 @@ body {
     color: @tcolor;
     font-size: @fz-m;
     background: #F0F0F0;
+
    }
 
 //Icon font, loaded through link with media rule in base64, because of cross-site font connection problem in FF and IE9
@@ -66,16 +68,15 @@ body {
 
 a {
     text-decoration:underline;
-    color: @tcolor-l2;
+    color: lighten(@pallete-color-3, 10%);
     }
 
 a:hover {
     text-decoration:none;
-    color: @tcolor-l1;
+    color: lighten(@pallete-color-1, 10%);
     }
 
 @media @media-step1 {
-    .l-facebook,
     .l-twitter,
     .l-rss,
     .l-archive {
@@ -113,27 +114,9 @@ a:hover {
             }
         }
 
-    .l-twitter,
-    .l-facebook {
-        span {
-            display: none;
-            }
-
-        &:after {
-            margin-left: 0;
-            font-size: 1em;
-            }
-        }
-
     .l-twitter {
         &:after {
             content: "";
-            }
-        }
-
-    .l-facebook {
-        &:after {
-            content: "";
             }
         }
 
@@ -181,7 +164,7 @@ a:hover {
 @header__mb: 10px;
 @header__pt: 20px;
 
-@logo_top: 25px;
+@logo_top: 26px;
 .header {
 
     a {
@@ -223,16 +206,18 @@ a:hover {
     color: @tcolor;
     font-size: 40px;
 
+    &:hover {color: @tcolor-l2;}
+
     @media @media-step1 {
 
         @logo-anim__props: logo-anim 1s ease;
         @logo-anim__keyframes-from: 0;
         @logo-anim__keyframes-to: @logo_top;
 
-        @-ms-keyframes logo-anim { 0% { top: @logo-anim__keyframes-from } 100% { top: @logo-anim__keyframes-to } }
         @-o-keyframes logo-anim { 0% { top: @logo-anim__keyframes-from } 100% { top: @logo-anim__keyframes-to } }
         @-webkit-keyframes logo-anim { 0% { top: 0 } 100% { top: @logo-anim__keyframes-to } }
         @-moz-keyframes logo-anim { 0% { top: @logo-anim__keyframes-from } 100% { top: @logo-anim__keyframes-to } }
+        @keyframes logo-anim { 0% { top: @logo-anim__keyframes-from } 100% { top: @logo-anim__keyframes-to } }
 
         position: relative;
         top: @logo_top;
@@ -241,27 +226,36 @@ a:hover {
 
         .m-tr(~"top .2s ease");
 
-        -ms-animation: @logo-anim__props;
+        font-size: 60px;
+
         -o-animation: @logo-anim__props;
         -webkit-animation: @logo-anim__props;
         -moz-animation: @logo-anim__props;
+        animation: @logo-anim__props;
 
+        .page-main & {
+            top: 0;
 
-        font-size: 60px;
+            -o-animation: none;
+            -webkit-animation: none;
+            -moz-animation: none;
+            animation: none;
+            }
 
-        #wrapper:hover & {
+        .header:hover & {
             top: 0;
             }
         }
     }
 
+@sidebar_padding: 10px;
 .sidebar {
     margin-bottom: 20px;
 
     a {
         display: block;
         padding: 7px @main__padding;
-        background: lighten(@pallete-color-3, 40%);
+        background-color: lighten(@pallete-color-3, 40%);
         border-bottom: lighten(@pallete-color-3, 30%) solid 1px;
         color: @tcolor-i;
         text-decoration: none;
@@ -279,27 +273,37 @@ a:hover {
         @nav-anim__keyframes-from: @sidebar__mr/2;
         @nav-anim__keyframes-to: @sidebar__mr;
 
-        @-ms-keyframes nav-anim { 0% { margin-left: @nav-anim__keyframes-from;} 100% { margin-left: @nav-anim__keyframes-to; } }
         @-o-keyframes nav-anim { 0% { margin-left: @nav-anim__keyframes-from; } 100% { margin-left: @nav-anim__keyframes-to; } }
         @-webkit-keyframes nav-anim {0% { margin-left: @nav-anim__keyframes-from;} 100% { margin-left: @nav-anim__keyframes-to; } }
         @-moz-keyframes nav-anim { 0% { margin-left:  @nav-anim__keyframes-from; } 100% { margin-left: @nav-anim__keyframes-to; } }
+        @keyframes nav-anim { 0% { margin-left:  @nav-anim__keyframes-from; } 100% { margin-left: @nav-anim__keyframes-to; } }
 
         overflow: auto;
         position: fixed;
-        top: @header__height + @header__mb + @header__pt + 5;
-        bottom: @header__pt + @main__mb;
+        top: @header__height + @header__mb + @header__pt - @sidebar_padding;
+        bottom: @main__mb;
         left: 50%;
         width: @nav-space - 20;
 
         margin-left: @sidebar__mr;
         margin-bottom: 0;
-        padding: 10px 10px 10px 10px;
+        padding: @sidebar_padding;
         .m-br(0 @main__border-rad @main__border-rad 0);
 
-        -ms-animation: @nav-anim__props;
-        -o-animation: @nav-anim__props;
-        -webkit-animation: @nav-anim__props;
-        -moz-animation: @nav-anim__props;
+
+        .page-main & {
+            -o-animation: @nav-anim__props;
+            -webkit-animation: @nav-anim__props;
+            -moz-animation: @nav-anim__props;
+            animation: @nav-anim__props;
+            }
+
+        .not-main & { /* to remove animation from search and tag pages */
+            -o-animation: none;
+            -webkit-animation: none;
+            -moz-animation: none;
+            animation: none;
+            }
         }
 
     .navigation {
@@ -325,10 +329,6 @@ a:hover {
 
                 .m-tr(~"background-color, width .2s linear");
 
-                //Enabling hardware acceleration
-                -webkit-backface-visibility: hidden;
-                -webkit-transform: translate3d(0, 0, 0);
-
                 &:hover {
                     text-decoration: underline;
 
@@ -342,11 +342,6 @@ a:hover {
                 margin-left: -15px;
                 margin-bottom: 3px;
                 padding: 4px 30px;
-                }
-
-            a.navigation_ic {
-                padding: 0;
-                margin-left: 0;
                 }
 
             @first-link-w_step: 6;
@@ -386,6 +381,36 @@ a:hover {
         }
     }
 
+.promote {
+
+    @media @media-step1 {
+        border-top: @tcolor-l4 dotted 1px;
+        padding-top: 10px;
+
+        li {
+            margin-bottom: 10px;
+            }
+
+        a {
+            //reset mobile first
+            display: inline;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+
+            color: @tcolor-l2;
+            font-size: @fz-xs;
+
+            &:hover {
+                text-decoration: underline;
+
+                //reset mobile first
+                background: none;
+                }
+            }
+        }
+    }
+
 @first-link-w: 75%;
 @search__p-l: 10px;
 .search {
@@ -402,7 +427,7 @@ a:hover {
         font-size: @fz-s;
         .custom-font;
 
-        -webkit-backface-visibility: hidden;
+
         }
 
     @media @media-step1 {
@@ -606,25 +631,52 @@ a:hover {
 
         h2, h3, h4, h5, h6 {
             .custom-font;
-            font-weight: 400;
             }
 
         h2 {
-            font-size: 22px;
-            margin-before: 0.83em;
-            margin-after: 0.83em;
+            position: relative;
+
+            font-size: 21px;
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+            font-weight: 400;
+
+            &:before {
+                content: '';
+                background: lighten(@pallete-color-2, 30%) ;
+                width: @main__padding / 3;
+                height: 1em;
+                position: absolute;
+                top: 0.2em;
+                left: -@main__padding;
+                border-radius: 0 5px 5px 0;
+                }
             }
 
         h3 {
-            font-size: 18px;
-            margin-before: 0.83em;
-            margin-after: 0.83em;
+            position: relative;
+
+            font-size: 19px;
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+            font-weight: 400;
+
+            &:before {
+                content: '';
+                background: lighten(@pallete-color-3, 30%);
+                width: @main__padding / 3;
+                height: 1em;
+                position: absolute;
+                top: 0.2em;
+                left: -@main__padding;
+                border-radius: 0 5px 5px 0;
+                }
             }
 
         h4, h5, h6 {
-            font-size: 16px;
-            margin-before: 0.5em;
-            margin-after: 0.5em;
+            font-size: 15px;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
             }
         }
 
@@ -753,7 +805,7 @@ a:hover {
         }
 
     a:hover {
-        color: @pallete-color-1;
+        color: lighten(@pallete-color-1, 10%);
         }
 
     .older {

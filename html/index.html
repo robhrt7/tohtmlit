@@ -24,17 +24,17 @@
 
     <link media="all and (min-width: 990px)" rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,cyrillic'>
     <link media="all and (min-width: 990px)" rel="stylesheet" href='http://static.tumblr.com/elbgqp3/d7em4bm1g/icon-font.css'>
-    <link rel="stylesheet" href="http://static.tumblr.com/elbgqp3/HPUmc2re6/style.css">
+    <link rel="stylesheet" href="http://static.tumblr.com/elbgqp3/hydmcba14/style.css">
 
     <style type="text/css">
         {CustomCSS}
     </style>
 
-    <!--[if lt IE 9]><script src="http://static.tumblr.com/elbgqp3/EuNm4a71f/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="http://static.tumblr.com/elbgqp3/EyLmc3obv/style.css"></script><![endif]-->
 </head>
 <body>
 
-<div id="wrapper">
+<div id="wrapper" {block:IndexPage}class="page-main{block:SearchPage} not-main{/block:SearchPage}{block:TagPage} not-main{/block:TagPage}"{/block:IndexPage}>
     <header class="header">
         <a href="/" class="logo">{Title}</a>
 
@@ -55,6 +55,7 @@
             <li><a href="/tagged/статьи">Статьи</a></li>
             <li><a href="/tagged/заметки">Заметки</a></li>
             <li><a href="http://rhr.me/#c" target="_blank">Об авторе</a></li>
+            <li><a href="http://twitter.com/operatino" class="l-twitter" title="@operatino"  target="_blank">Twitter</a></li>
             <li><a href="/archive" class="l-archive"><span>{lang:Archive}</span></a></li>
             <li><a href="{RSS}" title="RSS feed" class="l-rss" target="_blank"><span>{lang:RSS}</span></a></li>
 
@@ -71,9 +72,10 @@
             {block:SubmissionsEnabled}
             <li><a href="/submit">{SubmitLabel}</a></li>
             {/block:SubmissionsEnabled}
-
-            <li class="navigation_icons"><a href="http://twitter.com/operatino" class="navigation_ic l-twitter" title="@operatino"  target="_blank"><span>Twitter</span></a></li>
         </nav>
+        <ul class="promote">
+            <li><a href="http://rhr.me/mcss" target="_blank">MCSS - Многослойная система организации стилей</a></li>
+        </ul>
     </aside>
 
     <div class="main" role="main">
@@ -100,7 +102,13 @@
 
                 <header class="post_header">
                     {block:Title}
-                    <h2 class="post_title"><a href="{Permalink}">{Title}</a></h2>
+                        {block:IndexPage}
+                            <h2 class="post_title"><a href="{Permalink}">{Title}</a></h2>
+                        {/block:IndexPage}
+
+                        {block:PermalinkPage}
+                            <h1 class="post_title"><a href="{Permalink}">{Title}</a></h1>
+                        {/block:PermalinkPage}
                     {/block:Title}
 
                     {block:Date}
@@ -147,7 +155,15 @@
                 {/block:Date}
 
                 <div class="post_content">
-                    <h2 class="post_title post_title__link"><a href="{URL}" class="link" {Target}>{Name}</a></h2>
+                    {block:Title}
+                        {block:IndexPage}
+                        <h2 class="post_title post_title__link"><a href="{URL}" class="link" {Target}>{Name}</a></h2>
+                        {/block:IndexPage}
+
+                        {block:PermalinkPage}
+                        <h1 class="post_title post_title__link"><a href="{URL}" class="link" {Target}>{Name}</a></h1>
+                        {/block:PermalinkPage}
+                    {/block:Title}
 
                     {block:Description}
                         {Description}
