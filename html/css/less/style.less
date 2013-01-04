@@ -206,7 +206,7 @@ a:hover {
     color: @tcolor;
     font-size: 40px;
 
-    &:hover {color: @tcolor-l2;}
+    &:hover {color: @pallete-color-3;}
 
     @media @media-step1 {
 
@@ -604,6 +604,10 @@ a:hover {
             &_day {
                 display: block;
                 font-size: @fz-xl;
+
+                &_delim {
+                    display: none;
+                    }
                 }
 
             .post:hover & {
