@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="http://static.tumblr.com/elbgqp3/7dGm4bdjk/favicon.ico">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
     {block:Description}
-    <meta name="description" content="{MetaDescription}" />
+       <meta name="description" content="{MetaDescription}" />
     {/block:Description}
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,8 +18,12 @@
 
     <meta name="if:Show notes" content="1">
 
+    <!--Twitter and Open Graph-->
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="{PortraitURL-128}">
+
     {block:PermalinkPage}
-    <meta name="text:Disqus Shortname" content="" />
+        <meta name="text:Disqus Shortname" content="" />
     {/block:PermalinkPage}
 
     <link media="all and (min-width: 990px)" rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,cyrillic'>
@@ -32,6 +36,10 @@
 
     <!--[if lt IE 9]><script src="http://static.tumblr.com/elbgqp3/EyLmc3obv/style.css"></script><![endif]-->
 </head>
+
+<meta name="twitter:site" content="@operatino">
+<meta name="twitter:creator" content="@operatino">
+
 <body>
 
 <div id="wrapper" {block:IndexPage}class="page-main{block:SearchPage} not-main{/block:SearchPage}{block:TagPage} not-main{/block:TagPage}"{/block:IndexPage}>
