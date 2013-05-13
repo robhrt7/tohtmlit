@@ -28,7 +28,7 @@
 
     <link media="all and (min-width: 990px)" rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,cyrillic'>
     <link media="all and (min-width: 990px)" rel="stylesheet" href='http://static.tumblr.com/elbgqp3/d7em4bm1g/icon-font.css'>
-    <link rel="stylesheet" href="http://static.tumblr.com/elbgqp3/5mNmg3mmu/style.css">
+    <link rel="stylesheet" href="http://static.tumblr.com/elbgqp3/QUhmmr69r/style.css">
 
     <style type="text/css">
         {CustomCSS}
@@ -40,7 +40,7 @@
 <meta name="twitter:site" content="@operatino">
 <meta name="twitter:creator" content="@operatino">
 
-<body>
+<body {block:PermalinkPage}class="permalink"{/block:PermalinkPage}>
 
 <div id="wrapper" {block:IndexPage}class="page-main{block:SearchPage} not-main{/block:SearchPage}{block:TagPage} not-main{/block:TagPage}"{/block:IndexPage}>
     <header class="header">
@@ -59,6 +59,7 @@
             <input type="search" name="q" class="search_input" placeholder="Поиск..." />
         </form>
 
+	    <a href="#777" class="sidebar_show" onclick="this.className='sidebar_show __active'">Показать меню</a>
         <nav class="navigation" role="navigation">
             <li><a href="/tagged/статьи">Статьи</a></li>
             <li><a href="/tagged/заметки">Заметки</a></li>
@@ -83,7 +84,7 @@
         </nav>
         <ul class="promote">
             <li><a href="http://rhr.me/mcss" target="_blank">MCSS - Многослойная система организации стилей</a></li>
-            <li><a href="http://habrahabr.ru/company/odnoklassniki/blog/158917/" target="_blank">CSS анимации на реальном проекте</a></li>
+	        <li><a href="http://sourcejs.ru">Source - движок для документирования вёрстки</a></li>
         </ul>
     </aside>
 
@@ -92,15 +93,11 @@
 
         {block:SearchPage}
             {block:SearchResults}
-                <div class="search_results">{lang:Your search for SearchQuery returned SearchResultCount results 2}</div>
+                <div class="post">{lang:Your search for SearchQuery returned SearchResultCount results}</div>
             {block:SearchResults}
 
             {block:NoSearchResults}
-                <div class="post">
-                    <div class="post_content">
-                        {lang:No search results for SearchQuery 2}
-                    </div>
-                </div>
+                <div class="post">{lang:No search results for SearchQuery}</div>
             {block:NoSearchResults}
         {/block:SearchPage}
 
@@ -116,7 +113,7 @@
                         {/block:IndexPage}
 
                         {block:PermalinkPage}
-                            <h1 class="post_title"><a href="{Permalink}">{Title}</a></h1>
+                            <h1 class="post_title">{Title}</h1>
                         {/block:PermalinkPage}
                     {/block:Title}
 
@@ -170,7 +167,7 @@
                         {/block:IndexPage}
 
                         {block:PermalinkPage}
-                        <h1 class="post_title post_title__link"><a href="{URL}" class="link" {Target}>{Name}</a></h1>
+                        <h1 class="post_title post_title__link">{Name}</h1>
                         {/block:PermalinkPage}
                     {/block:Title}
 
@@ -281,7 +278,10 @@
                 {/block:Date}
 
                 <div class="post_content">
-                    <div class="post_video">{Video-500}</div>
+                    <div class="post_video">
+	                    {Video-500}
+	                    <img class="post_video_placeholder" src="data:image/gif;base64,R0lGODlhEAAJAIAAAP///wAAACH5BAEAAAAALAAAAAAQAAkAAAIKhI+py+0Po5yUFQA7">
+                    </div>
 
                     {block:Caption}
                     <div class="post_caption">{Caption}</div>
@@ -326,7 +326,7 @@
         {block:Pagination}
         <nav class="pagination" role="navigation">
             {block:NextPage}
-                <a href="{NextPage}" class="older">&laquo; Старые</a>
+                <a href="{NextPage}" class="older">&laquo; {lang:Older entries}</a>
             {/block:NextPage}
 
             {block:PreviousPage}

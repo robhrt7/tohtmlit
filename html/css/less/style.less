@@ -265,6 +265,22 @@ a:hover {
         background: lighten(@pallete-color-3, 30%);
         }
 
+	&_show {
+
+		}
+		&_show ~ nav,
+		&_show ~ ul {
+			display: none;
+			}
+
+		&_show.__active {
+			display: none;
+			}
+			&_show.__active ~ nav,
+			&_show.__active ~ ul {
+				display: block;
+				}
+
     @media @media-step1 {
 
         @sidebar__mr: 294px;
@@ -304,6 +320,15 @@ a:hover {
             -moz-animation: none;
             animation: none;
             }
+
+		& &_show { //cascade for weight
+			display: none;
+			}
+
+			&_show ~ nav,
+			&_show ~ ul {
+				display: block;
+				}
         }
 
     .navigation {
@@ -610,6 +635,7 @@ a:hover {
                     }
                 }
 
+            .permalink &, //Context class
             .post:hover & {
                 background-color: @pallete-color-3;
                 }
@@ -628,7 +654,6 @@ a:hover {
             margin-left: 2em;
             }
 
-        iframe,
         img {
             max-width: 100%;
             }
@@ -695,8 +720,21 @@ a:hover {
         }
 
     &_video {
-        text-align: center;
+	    position: relative;
         margin-bottom: .5em;
+
+	    &_placeholder { //16x9 image
+		    display: block;
+		    min-width: 100%;
+		    position: relative;
+		    z-index: -1;
+		    }
+
+	    iframe {
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    }
         }
 
     &_info {
@@ -744,6 +782,7 @@ a:hover {
 
             .m-tr(~"background-color .2s ease");
 
+	        .permalink &, //Context class
             .post:hover & {
                 background: lighten(@pallete-color-2, 30%);
                 }
