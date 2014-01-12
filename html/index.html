@@ -358,13 +358,20 @@
 
 <script>
     $(function() {
-        var codeBlocks = $('pre code');
+        var codeBlocks = $('.post_content pre code');
         // only if code blocks were found
         if (codeBlocks.length) {
-            $('pre code').each(function() {
-                var html = $(this).html();
-                var exportHtml = html.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
-                $(this).html(exportHtml);
+            codeBlocks.each(function() {
+	            var t = $(this);
+
+	            // wrap with pre
+	            if ( ! (t.parent().is("pre") ) ) {
+					t.wrap('<pre></pre>');
+				}
+                var html = t.html(),
+	                exportHtml = html.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+
+                t.html(exportHtml);
             });
 
             codeBlocks.parent().addClass('prettyprint');
