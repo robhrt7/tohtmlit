@@ -649,66 +649,74 @@ a:hover {
         line-height: 1.5;
 
         p {
-            margin: 1em 0;
-            }
+          margin: 1em 0;
+          }
 
         ul {
-            margin-left: 2em;
-            }
+          margin-left: 2em;
+          }
 
         img {
-            max-width: 100%;
-            }
+          max-width: 100%;
+          }
 
         h2, h3, h4, h5, h6 {
-            .custom-font;
-            }
+          .custom-font;
+          }
 
         h2 {
-            position: relative;
+          position: relative;
 
-            font-size: 21px;
-            margin-top: 0.83em;
-            margin-bottom: 0.83em;
-            font-weight: 400;
+          font-size: 21px;
+          margin-top: 0.83em;
+          margin-bottom: 0.83em;
+          font-weight: 400;
 
             &:before {
-                content: '';
-                background: lighten(@pallete-color-2, 30%) ;
-                width: @main__padding / 3;
-                height: 1em;
-                position: absolute;
-                top: 0.2em;
-                left: -@main__padding;
-                border-radius: 0 5px 5px 0;
-                }
+              content: '';
+              background: lighten(@pallete-color-2, 30%) ;
+              width: @main__padding / 3;
+              height: 1em;
+              position: absolute;
+              top: 0.2em;
+              left: -@main__padding;
+              border-radius: 0 5px 5px 0;
+              }
             }
 
         h3 {
-            position: relative;
+          position: relative;
 
-            font-size: 19px;
-            margin-top: 0.83em;
-            margin-bottom: 0.83em;
-            font-weight: 400;
+          font-size: 19px;
+          margin-top: 0.83em;
+          margin-bottom: 0.83em;
+          font-weight: 400;
 
             &:before {
-                content: '';
-                background: lighten(@pallete-color-3, 30%);
-                width: @main__padding / 3;
-                height: 1em;
-                position: absolute;
-                top: 0.2em;
-                left: -@main__padding;
-                border-radius: 0 5px 5px 0;
-                }
+              content: '';
+              background: lighten(@pallete-color-3, 30%);
+              width: @main__padding / 3;
+              height: 1em;
+              position: absolute;
+              top: 0.2em;
+              left: -@main__padding;
+              border-radius: 0 5px 5px 0;
+              }
             }
 
         h4, h5, h6 {
-            font-size: 15px;
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
-            }
+          font-size: 15px;
+          margin-top: 0.5em;
+          margin-bottom: 0.5em;
+          }
+
+        //not pre>code
+        li > code,
+        p > code {
+          padding: 2px 4px;
+          border: 1px solid @pallete-color-4;
+          color: #47536B;
+          }
         }
 
     &_content_info {
