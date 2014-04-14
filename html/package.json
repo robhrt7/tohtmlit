@@ -1,0 +1,13 @@
+{
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "dependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-less": "~0.11.0"
+  }
+}

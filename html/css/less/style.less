@@ -43,8 +43,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: @tcolor;
     font-size: @fz-m;
-    background: #F0F0F0;
+    background-color: #F0F0F0;
 
+    @media @media-step1 {
+        background-image: url('http://static.tumblr.com/elbgqp3/68En40sgq/gplay.svg');
+        background-attachment: fixed;
+        }
    }
 
 //Icon font, loaded through link with media rule in base64, because of cross-site font connection problem in FF and IE9
@@ -306,7 +310,7 @@ a:hover {
         margin-left: @sidebar__mr;
         margin-bottom: 0;
         padding: @sidebar_padding;
-        .m-br(0 @main__border-rad @main__border-rad 0);
+        border-radius: 0 @main__border-rad @main__border-rad 0;
 
 
         .page-main & {
@@ -347,7 +351,7 @@ a:hover {
                 padding: 4px 30px;
                 text-decoration: none;
                 font-size: @fz-l;
-                .m-br(0 @main__border-rad @main__border-rad 0);
+                border-radius: 0 @main__border-rad @main__border-rad 0;
                 color: @tcolor-l1;
 
                 //reset mobile first
@@ -450,7 +454,7 @@ a:hover {
         width: 100%;
         padding: 5px 0 5px @search__p-l;
         border: solid 1px @pallete-color-4;
-        .m-br(@main__border-rad);
+        border-radius: @main__border-rad;
         font-size: @fz-s;
         .custom-font;
 
@@ -481,17 +485,8 @@ a:hover {
         position: relative;
         margin-right: @nav-space;
         margin-left: @post_data__width + 10;
-        .m-br(@main__border-rad);
-
-        &:after {
-            position: absolute;
-            z-index: -1;
-            content: "";
-            top: 0; right: 0; bottom: 0; left: 0;
-            .m-s(0 0 10px 1px @pallete-color-4);
-            border: solid 1px @pallete-color-4;
-            .m-br(@main__border-rad);
-            }
+        border-radius: @main__border-rad;
+        border: solid 1px #E5E5E5;
         }
     }
 
@@ -619,7 +614,7 @@ a:hover {
             padding: 5px;
             margin-right: @main__padding;
             background-color: lighten(@pallete-color-3, 20%);
-            .m-br(@main__border-rad 0 0 @main__border-rad);
+            border-radius: @main__border-rad 0 0 @main__border-rad;
 
             color: @tcolor-i;
             white-space: nowrap;
@@ -783,7 +778,7 @@ a:hover {
             *zoom: 1;
             padding: 2px 5px 1px 15px;
             background: lighten(@pallete-color-2, 40%);
-            .m-br(50em 2px 2px 50em);
+            border-radius: 50em 2px 2px 50em;
             font-size: 9px;
             line-height: 1;
             text-decoration: none;
@@ -808,7 +803,7 @@ a:hover {
                 top: 3px;
                 width: 6px;
                 height: 6px;
-                .m-br(50em);
+                border-radius: 50em;
                 background-color: @tcolor-i;
                 }
             }
