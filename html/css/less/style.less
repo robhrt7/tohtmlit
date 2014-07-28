@@ -725,13 +725,11 @@ a:hover {
 
     &_video {
 	    position: relative;
+        padding-bottom: 56.25%; // creating 16:9 container
         margin-bottom: .5em;
 
-	    &_placeholder { //16x9 image
-		    display: block;
-		    min-width: 100%;
-		    position: relative;
-		    z-index: -1;
+	    &_placeholder { //legacy 16:9 placeholder
+		    display: none;
 		    }
 
 	    iframe {
